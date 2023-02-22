@@ -26,7 +26,7 @@ sudo wget "https://raw.githubusercontent.com/csk200387/StreamRecorder/main/twitc
 chmod +x /usr/local/bin/twitchChecker
 sudo wget "https://raw.githubusercontent.com/csk200387/StreamRecorder/main/screen.sh"
 wget "https://github.com/glotlabs/gdrive/releases/download/3.6.0/gdrive_linux-x64.tar.gz"
-wget "https://github.com/csk200387/StreamRecorder/blob/main/recorder.py"
+wget "https://raw.githubusercontent.com/csk200387/StreamRecorder/main/recorder.py"
 tar -zxvf "gdrive_linux-x64.tar.gz"
 rm "gdrive_linux-x64.tar.gz"
 sudo mv gdrive /usr/local/bin
