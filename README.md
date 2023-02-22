@@ -2,7 +2,7 @@
 # setup
 ```bash
 wget https://raw.githubusercontent.com/csk200387/StreamRecorder/main/setup.sh
-sh setup.sh
+sudo sh setup.sh
 ```
 # streamlink Install
 1. `sudo apt update`
