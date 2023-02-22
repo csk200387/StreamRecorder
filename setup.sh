@@ -20,9 +20,12 @@ sudo apt -y install python-pip
 pip3 install requests
 pip3 install pytz
 pip3 install datetime
-
+https://github.com/csk200387/StreamRecorder/blob/main/screen.sh
+https://raw.githubusercontent.com/csk200387/StreamRecorder/main/screen.sh
 # twitchChecker 다운로드 및 gdrive 설치
-sudo wget "https://github.com/asdf/StreamRecorder/raw/main/twitchChecker" -P /usr/local/bin
+sudo wget "https://raw.githubusercontent.com/csk200387/StreamRecorder/main/twitchChecker" -P /usr/local/bin
+chmod +x /usr/local/bin/twitchChecker
+sudo wget "https://raw.githubusercontent.com/csk200387/StreamRecorder/main/screen.sh"
 wget "https://github.com/glotlabs/gdrive/releases/download/3.6.0/gdrive_linux-x64.tar.gz"
 tar -zxvf gdrive_linux-x64.tar.gz
 sudo mv gdrive /usr/local/bin
