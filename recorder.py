@@ -49,13 +49,8 @@ def main() :
         time.sleep(PERIOD)
 
 def sendHook(sender:str, content:str) :
-    headers = {
-        'Content-Type' : 'application/json'
-    }
-    data = {
-        'content' : content,
-        'username': sender
-    }
+    headers = {'Content-Type' : 'application/json'}
+    data = {'content' : content, 'username': sender}
     data = json.dumps(data)
     requests.post(DISCORD_WEBHOOK_URL, headers=headers, data=data)
 
