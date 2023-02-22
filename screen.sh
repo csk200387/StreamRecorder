@@ -1,6 +1,6 @@
 #!/bin/bash
 
-streamer=("woowakgood" "vo_ine" "jingburger" "lilpaaaaaa" "cotton__123" "gosegugosegu" "viichan6")
+streamer=( "woowakgood" "vo_ine" "jingburger" "lilpaaaaaa" "cotton__123" "gosegugosegu" "viichan6" )
 
 for i in {0..6}
 do
