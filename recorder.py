@@ -33,7 +33,7 @@ def main() :
                     arr = f.readlines()
                 content = ''.join(map(str, arr[:8]+arr[9:]))
                 sendHook(username, f'```{content}```')
-                Nick, streamTitle = map(str, getUserID(username))
+                Nick, streamTitle = getUserID(username)
                 date = now.split()[0].replace('-', ' ')
                 template = ''.join(x for x in f'비디오 {Nick} {date} {streamTitle}' if x.isalnum() or x in ' -_.')
                 new_filename = template.strip()+'.ts'
