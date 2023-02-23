@@ -35,7 +35,8 @@ def main() :
                 sendHook(username, f'```{content}```')
                 Nick, streamTitle = map(str, getUserID(username))
                 date = now.split()[0].replace('-', ' ')
-                new_filename = ''.join(x for x in f'비디오 {Nick} {date} {streamTitle}.ts' if x.isalnum() or x in ' -_.')
+                template = ''.join(x for x in f'비디오 {Nick} {date} {streamTitle}' if x.isalnum() or x in ' -_.')
+                new_filename = template.strip()+'.ts'
                 new_recorded_filename = os.path.join(processed_path, new_filename)
                 os.rename(recorded_filename, new_recorded_filename)
                 subprocess.call(['gdrive', 'files', 'upload', '--parent', GDRIVE_FILE_ID, new_recorded_filename])
@@ -58,9 +59,10 @@ def getUserID(loginID:str) :
     headers = {'Authorization': 'Bearer '+TWITCH_BEARER_TOKEN, 'Client-ID': TWITCH_CLIENT_ID}
     req = requests.get('https://api.twitch.tv/helix/users?login='+loginID, headers=headers).json()
     id = req['data'][0]['id']
-    nick = req['data'][0]['display_name']
+    nick = req['data'][0]['display_name'].strip("_")
     req = requests.get('https://api.twitch.tv/helix/channels?broadcaster_id='+id, headers=headers).json()
-    return [nick, req['data'][0]['title']]
+    title = req['data'][0]['title']
+    return [nick, title]
 
 if __name__ == '__main__':
     main()
