@@ -42,7 +42,7 @@ def main() :
                 start_runtime = time.time()
                 subprocess.call(['gdrive', 'files', 'upload', '--parent', GDRIVE_FILE_ID, new_recorded_filename])
                 runtime = time.time()-start_runtime
-                driveAlert(username, new_recorded_filename, runtime)
+                driveAlert(username, new_filename, runtime)
                 os.remove(f'{processed_path}/{new_filename}')
                 os.remove(f'{processed_path}/{checkedfile}')
             else :
