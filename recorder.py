@@ -1,4 +1,4 @@
-import datetime, time, os, subprocess, json, requests, sys, pytz
+import datetime, time, os, subprocess, json, requests, sys, pytz, time
 tz_korea = pytz.timezone('Asia/Seoul')
 
 TWITCH_OAUTH_TOKEN = '' # 광고 제거용 트위치 OAuth토큰
@@ -32,14 +32,17 @@ def main() :
                 with open(f'{processed_path}/{checkedfile}', 'r') as f :
                     arr = f.readlines()
                 content = ''.join(map(str, arr[:8]+arr[9:]))
-                sendHook(username, f'```{content}```')
+                sendHook(username, content)
                 Nick, streamTitle = getUserID(username)
                 date = now.split()[0].replace('-', ' ')
                 template = ''.join(x for x in f'비디오 {Nick} {date} {streamTitle}' if x.isalnum() or x in ' -_.')
                 new_filename = template.strip()+'.ts'
                 new_recorded_filename = os.path.join(processed_path, new_filename)
                 os.rename(recorded_filename, new_recorded_filename)
+                start_runtime = time.time()
                 subprocess.call(['gdrive', 'files', 'upload', '--parent', GDRIVE_FILE_ID, new_recorded_filename])
+                runtime = time.time()-start_runtime
+                driveAlert(username, new_recorded_filename, runtime)
                 os.remove(f'{processed_path}/{new_filename}')
                 os.remove(f'{processed_path}/{checkedfile}')
             else :
@@ -51,7 +54,31 @@ def main() :
 
 def sendHook(sender:str, content:str) :
     headers = {'Content-Type' : 'application/json'}
-    data = {'content' : content, 'username': sender}
+    data = {'content' : f'```{content}```', 'username': sender}
+    data = json.dumps(data)
+    requests.post(DISCORD_WEBHOOK_URL, headers=headers, data=data)
+
+def driveAlert(user:str, filename:str, runtime:str) :
+    time = round(runtime, 2)
+    headers = {'Content-Type' : 'application/json'}
+    data = {
+        'username': user,
+        'embeds': [
+            {
+                'title': 'Upload Success',
+                'description': filename,
+                'color': 1561838,
+                'author': {
+                    'name': 'GoogleDrive',
+                    'url': 'https://drive.google.com/drive/u/0/my-drive',
+                    'icon_url': 'https://play-lh.googleusercontent.com/t-juVwXA8lDAk8uQ2L6d6K83jpgQoqmK1icB_l9yvhIAQ2QT_1XbRwg5IpY08906qEw=w480-h960-rw'
+                },
+                'footer': {
+                    'text': f'Runtime : {time} sec'
+                }
+            }
+        ]
+    }
     data = json.dumps(data)
     requests.post(DISCORD_WEBHOOK_URL, headers=headers, data=data)
 
@@ -59,7 +86,7 @@ def getUserID(loginID:str) :
     headers = {'Authorization': 'Bearer '+TWITCH_BEARER_TOKEN, 'Client-ID': TWITCH_CLIENT_ID}
     req = requests.get('https://api.twitch.tv/helix/users?login='+loginID, headers=headers).json()
     id = req['data'][0]['id']
-    nick = req['data'][0]['display_name'].strip("_")
+    nick = req['data'][0]['display_name'].strip('_')
     req = requests.get('https://api.twitch.tv/helix/channels?broadcaster_id='+id, headers=headers).json()
     title = req['data'][0]['title']
     return [nick, title]
