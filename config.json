@@ -1,8 +1,8 @@
 {
     "TWITCH_OAUTH_TOKEN": "",
     "TWITCH_BEARER_TOKEN": "",
-    "TWITCH_CLIENT_ID": "", 
+    "TWITCH_CLIENT_ID": "",
     "GDRIVE_FILE_ID": "",
     "DISCORD_WEBHOOK_URL": "",
-    "PERIOD": 2
+    "PERIOD": 1
 }
