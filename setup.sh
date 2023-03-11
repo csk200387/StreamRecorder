@@ -22,7 +22,6 @@ pip3 install pytz -q
 pip3 install datetime -q
 
 # twitchChecker 다운로드 및 gdrive 설치
-sudo wget "https://raw.githubusercontent.com/csk200387/StreamRecorder/main/twitchChecker" -P /usr/local/bin
 sudo wget "https://raw.githubusercontent.com/csk200387/StreamRecorder/main/screen.sh"
 wget "https://github.com/glotlabs/gdrive/releases/download/3.8.0/gdrive_linux-x64.tar.gz"
 wget "https://raw.githubusercontent.com/csk200387/StreamRecorder/main/recorder.py"
@@ -33,4 +32,5 @@ rm "gdrive_linux-x64.tar.gz"
 sudo mv gdrive /usr/local/bin
 rm setup.sh
 echo "term screen-256color" > ~/.screenrc
+echo "Done!"
 echo "run \"./screen.sh\""
