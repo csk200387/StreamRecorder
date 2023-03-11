@@ -19,13 +19,13 @@ sudo apt -y -t -qq bullseye-backports install streamlink >/dev/null 2>&1
 echo "streamlink install success"
 
 # 필수 패키지 설치
-!sudo apt -y -qq install screen >/dev/null 2>&1
-!echo "screen install success"
-!sudo apt -y -qq install python-pip >/dev/null 2>&1
-!pip3 install requests -q
-!pip3 install pytz -q
-!pip3 install datetime -q
-!echo "python module install success" 
+sudo apt -y -qq install screen >/dev/null 2>&1
+echo "screen install success"
+sudo apt -y -qq install python-pip >/dev/null 2>&1
+pip3 install requests -q
+pip3 install pytz -q
+pip3 install datetime -q
+echo "python module install success" 
 
 wget -q "https://raw.githubusercontent.com/csk200387/StreamRecorder/main/recorder.py"
 echo "recorder.py download success"
