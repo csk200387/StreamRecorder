@@ -1,9 +1,10 @@
 #!/bin/bash
 
-streamer=( "woowakgood" "vo_ine" "jingburger" "lilpaaaaaa" "cotton__123" "gosegugosegu" "viichan6" )
+# 녹화할 스트리머 리스트
+streamers=("woowakgood" "vo_ine" "jingburger" "lilpaaaaaa" "cotton__123" "gosegugosegu" "viichan6")
 
-for i in {0..6}
+for streamer in "${my_array[@]}";
 do
-    screen -dmS ${streamer[i]}
-    screen -S ${streamer[i]} -X stuff "python3 ~/recorder.py ${streamer[i]}$(printf \\r)"
+    screen -dmS $item
+    screen -S $item -X stuff "python3 ~/recorder.py ${streamer[i]}$(printf \\r)"
 done

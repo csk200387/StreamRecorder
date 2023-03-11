@@ -1,14 +1,18 @@
 import datetime, time, os, subprocess, json, requests, sys, pytz, time
 tz_korea = pytz.timezone('Asia/Seoul')
 
-TWITCH_OAUTH_TOKEN = '' # 광고 제거용 트위치 OAuth토큰
-TWITCH_BEARER_TOKEN = ''
-TWITCH_CLIENT_ID = ''
-GDRIVE_FILE_ID = '' # 구글 드라이브 폴더 ID
-DISCORD_WEBHOOK_URL = '' # Checker 결과를 받을 WEBHOOK URL
-PERIOD = 1  # 반복 대기 시간 (초)
+
+# Load config
+with open("config.json", "r") as f :
+    config = json.loads(f.read())
+
+TWITCH_OAUTH_TOKEN = config['TWITCH_OAUTH_TOKEN'] # 시작/중간 광고 제거용 트위치 OAuth토큰
+TWITCH_BEARER_TOKEN = config['TWITCH_BEARER_TOKEN']
+TWITCH_CLIENT_ID = config['TWITCH_CLIENT_ID']
+GDRIVE_FILE_ID = config['GDRIVE_FILE_ID'] # 구글 드라이브 폴더 ID
+DISCORD_WEBHOOK_URL = config['DISCORD_WEBHOOK_URL'] # 손실정보, 드라이브 업로드 알림을 받을 디스코드 Webhook 주소
+PERIOD = config['PERIOD']  # 반복 대기 시간 (초)
 PATH = r'./'  # 저장 경로
-# ------------------------------------------------
 
 
 def main() :
