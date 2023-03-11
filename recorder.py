@@ -31,7 +31,7 @@ def main() :
                         '--twitch-disable-ads', 'twitch.tv/' + username, 'best', '-o', recorded_filename])
         try :
             if os.path.isfile(f'{processed_path}/{filename}') :
-                subprocess.call(['twitchChecker', f'{processed_path}/{filename}'])
+                subprocess.call(['python3', 'twitchchecker.py', f'{processed_path}/{filename}'])
                 checkedfile = filename.replace('.ts', '.txt')
                 with open(f'{processed_path}/{checkedfile}', 'r') as f :
                     arr = f.readlines()

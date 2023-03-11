@@ -10,3 +10,12 @@ sudo sh setup.sh
 3. `sudo add-apt-repository "deb http://deb.debian.org/debian bullseye-backports main"`
 4. `sudo apt update`
 5. `sudo apt -Y -t bullseye-backports install streamlink`
+
+# GDrive Install
+## [Download Here](https://github.com/glotlabs/gdrive)
+
+1. `wget https://github.com/glotlabs/gdrive/releases/download/X.X.X/gdrive_linux-x64.tar.gz`
+
+# Checker Download
+## [Download Here](https://github.com/nxwqwer/twitchchecker)
+ **recorder.py 와 같은 위치에 저장해야 함**
