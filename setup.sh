@@ -31,12 +31,15 @@ wget -q "https://raw.githubusercontent.com/csk200387/StreamRecorder/main/recorde
 echo "recorder.py download success"
 wget -q "https://raw.githubusercontent.com/csk200387/StreamRecorder/main/screen.sh"
 echo "screen.sh download success"
+wget -q "https://raw.githubusercontent.com/csk200387/StreamRecorder/main/config.json"
+echo "config.json download success" 
 chmod +x screen.sh
-tar -zxvf "gdrive_linux-x64.tar.gz"
-echo "unzip gdrive"
+tar -zxvf "gdrive_linux-x64.tar.gz" >/dev/null 2>&1
+echo "unzip gdrive...."
 rm "gdrive_linux-x64.tar.gz"
 sudo mv gdrive /usr/local/bin
 rm setup.sh
+echo "setupfiles remove success"
 echo "term screen-256color" > ~/.screenrc
-echo "Done!"
-echo "run \"./screen.sh\""
+echo -e "\e[34mDone!\e[0m"
+echo -e "\e[32mPlease enter your token and information in config.json, and run \"./screen.sh\" to start recording.\e[0m"
