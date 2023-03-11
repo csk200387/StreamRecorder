@@ -1,2 +1,3 @@
 recorder_s.py
 __pycache__/
+*.ts
