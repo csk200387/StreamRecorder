@@ -15,7 +15,7 @@ sudo apt-key adv -q --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D13
 sudo add-apt-repository -y "deb http://deb.debian.org/debian bullseye-backports main" >/dev/null 2>&1
 echo "adding apt repository..."
 sudo apt -y -qq update >/dev/null 2>&1
-sudo apt -y -t -qq bullseye-backports install streamlink >/dev/null 2>&1
+sudo apt -y -t bullseye-backports install streamlink >/dev/null 2>&1
 echo "streamlink install success"
 
 # 필수 패키지 설치
