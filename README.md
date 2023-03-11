@@ -1,4 +1,11 @@
 # StreamRecorder
+클라우드 인스턴스에서 구동하는 트위치 스트림 레코더
+
+## 기능
+* 스트림 추적기능
+* 손실정보를 디스코드 웹훅을 통해 전송
+* 구글 드라이브 자동업로드
+
 # setup
 ```bash
 wget https://raw.githubusercontent.com/csk200387/StreamRecorder/main/setup.sh
