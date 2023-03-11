@@ -9,8 +9,8 @@ fi
 # 패키지 업데이트 및 streamlink 설치
 sudo apt -y -qq update
 sudo apt -y -qq upgrade
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138 0E98404D386FA1D9 -qq
-sudo add-apt-repository "deb http://deb.debian.org/debian bullseye-backports main" -qq
+sudo apt-key adv -q --keyserver keyserver.ubuntu.com --recv-keys 648ACFD622F3D138 0E98404D386FA1D9
+sudo add-apt-repository -q "deb http://deb.debian.org/debian bullseye-backports main"
 sudo apt -y -qq update
 sudo apt -y -t -qq bullseye-backports install streamlink
 
